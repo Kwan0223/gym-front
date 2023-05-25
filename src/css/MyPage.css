@@ -1,0 +1,36 @@
+.MyPage-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    padding-left: 20%;
+}
+
+.MyPage-image-container {
+    position: relative;
+}
+
+.MyPage-image {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+}
+
+.edit-MyPage-button {
+    position: absolute;
+    top: 20%;
+    right: -120px;
+}
+
+.info-container {
+    margin-left: 170px;
+    margin-top: 20px;
+}
+
+.change-password-button {
+    margin-left: 170px;
+    margin-top: 20px;
+    color: white;
+    background-color: black;
+}

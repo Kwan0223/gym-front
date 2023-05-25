@@ -1,0 +1,38 @@
+.gymContent {
+    padding-top: 50px;
+}
+.gym {
+    height: 100px;
+}
+.gym h2 {
+    padding-right: 1300px;
+}
+.gymImgs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    width: 80%; /* Adjust to suit your needs */
+    margin: 0 auto; /* Centers the .gymImgs div */
+    height: 60vh; /* Adjust to suit your needs */
+}
+
+.leftImages, .rightUpImages, .rightDownImages {
+    flex: 1;
+    height: 100%;
+}
+
+.leftImages img, .rightUpImages img, .rightDownImages img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.rightDownImages {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.rightDownImages img {
+    height: 50%;
+}
