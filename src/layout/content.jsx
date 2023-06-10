@@ -1,21 +1,40 @@
-import React, { useContext } from 'react';  // import useContext here
+import React, {useContext, useEffect, useState} from 'react';  // import useContext here
 import Card from "../page/card";
 import '../css/Content.css';
 import {Link, useLocation} from 'react-router-dom';
-import { UserContext } from '../components/UserProvider'; // Make sure to import UserContext from the correct path
+import {UserContext} from '../components/UserProvider';
+import SearchBar from "../page/SearchBar";
+import axios from "axios";
+import {logDOM} from "@testing-library/react";
+
 
 const Content = () => {
     const location = useLocation();
-    const { user } = useContext(UserContext); // use useContext here
+    const {user} = useContext(UserContext); // use useContext here
 
     let userFromStorage = localStorage.getItem('user');
     userFromStorage = userFromStorage ? JSON.parse(userFromStorage) : location.state ? location.state.data : null;
 
-    console.log("TEST !!! : ", userFromStorage);
 
+    const [searchItem, setSearchItem] = useState({
 
+        area: '',
+        name: ''
+    });
+    // const [points, setPoints] = useState({});
+    const [points, setPoints] = useState({content: []});
 
-    const imagesList =[
+    useEffect(() => {
+        axios.get('http://localhost:8080/api/v1/point')
+            .then(response => {
+                setPoints(response.data);
+            })
+            .catch(error => {
+                console.error('There was an error!', error);
+            });
+    }, []);
+
+    const imagesList = [
         {
 
             gymName: '호매실헬스',
@@ -73,16 +92,40 @@ const Content = () => {
             instaUrl: ' https://blog.naver.com/wakeupgym '
         },
 
-        ]
+    ]
+    // const handleSearch = (searchInput) => {
+    //     setSearchItem(searchInput);
+    // }
+    const handleSearch = () => {
+        console.log("TEST DATA :" , points)
+    }
+    //
+    // const filteredImagesList = points.content.filter((data) =>
+    //     console.log("TEST Filter Data : ")
+    //     // data.pointAddress.toLowerCase().includes(searchItem.area.toLowerCase()) &&
+    //     // data.pointName.toLowerCase().includes(searchItem.name.toLowerCase())
+    // );
 
 
-    console.log("TEST : ", imagesList);
     return (
-        <div className="card-container">
-            {imagesList.map((data, index) => (
-                <Card key={index} data={data}  className="card"/>
-            ))}
-        </div>
+        <>
+            <SearchBar onSearch={handleSearch}/>
+            <button onClick={handleSearch}>test</button>
+            {/*<div className="card-container">*/}
+            {/*    {points.content.map((data, index) => (*/}
+            {/*        <Card key={index} data={data} className="card"/>*/}
+            {/*    ))}*/}
+            {/*</div>*/}
+            <div className="card-container">
+                {points.content ? (
+                    points.content.map((data, index) => (
+                        <Card key={index} data={data} className="card" />
+                    ))
+                ) : (
+                    <p>Loading...</p>
+                )}
+            </div>
+        </>
 
     );
 };

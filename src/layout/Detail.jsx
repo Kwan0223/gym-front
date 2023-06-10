@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useLocation} from 'react-router-dom';
 import '../css/Detail.css';
 
@@ -6,6 +6,13 @@ const Detail = () => {
     const location = useLocation();
     const {data} = location.state;
 
+
+    useEffect( () => {
+        // console.log("TES props ::" , props );
+        console.log("TES images ::" , data );
+        // console.log("TES data ::" , data );
+
+    }, [])
     console.log("Data in Detail:", data);
 
     if (!data) {
@@ -21,14 +28,14 @@ const Detail = () => {
             </div>
             <div className="gymImgs">
                 <div className="leftImages">
-                <img src={data.img[0]} alt={`gym 1`} id={`img1`} />
+                <img src={data.pointImagePath[0]} alt={`gym 1`} id={`img1`} />
                 </div>
                 <div className="rightUpImages">
-                    <img src={data.img[1]} alt={`gym 2`} id={`img2`} />
+                    <img src={data.pointImagePath[1]} alt={`gym 2`} id={`img2`} />
                 </div>
                 <div className="rightDownImages">
-                    <img src={data.img[2]} alt={`gym 3`} id={`img3`} />
-                    <img src={data.img[3]} alt={`gym 4`} id={`img4`} />
+                    <img src={data.pointImagePath[2]} alt={`gym 3`} id={`img3`} />
+                    <img src={data.pointImagePath[3]} alt={`gym 4`} id={`img4`} />
                 </div>
             </div>
         </div>

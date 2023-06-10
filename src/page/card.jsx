@@ -6,10 +6,10 @@ import '../css/Card.css';
 const Card = (props) => {
     const navigate = useNavigate();
 
-    let params = props.data;
+    let params = props.content;
 
     const handleClick = () => {
-        navigate(`/Detail/${props.data.gymName}`, { state: { data: props.data } });
+        navigate(`/Detail/${props.data.pointName}`, { state: { data: props.data } });
     };
 
 

@@ -22,28 +22,20 @@ const Login = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        try {
-            const res = await axios.post('http://localhost:8080/login', userInfo, {
+
+            const res = await axios.post('http://localhost:8080/api/v1/users/login', userInfo, {
                 headers : {
                     "Content-Type" : "application/json",
                 },
             });
 
-            console.log("TEST RES : ", res);
+            console.log("TEST RES  data: ", res.data);
             console.log("TEST UserInfo : " , userInfo);
+            setUser(res.data);
+            navigate('/');
 
-            if(res.data === 'login Success') {
-                console.log("TEST RES : ", res);
 
-                // 서버에서 사용자 데이터를 가져옵니다.
-                // const userDataResponse = await axios.get(`http://localhost:8080/getUser/${userInfo.email}`);  // 서버의 실제 API 엔드포인트로 교체해야 합니다.
-                // setUser(userDataResponse.data);  // context에 사용자 데이터를 설정합니다.
-            } else {
-                console.log('Login failed');
-            }
-        } catch (error) {
-            console.log(error);
-        }
+
     };
 
 
