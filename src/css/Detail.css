@@ -1,24 +1,32 @@
 .gymContent {
     padding-top: 50px;
 }
+
 .gym {
     height: 100px;
 }
+
 .gym h2 {
     padding-right: 1300px;
 }
+
 .gymImgs {
     display: flex;
     justify-content: center;
     gap: 10px;
-    width: 80%; /* Adjust to suit your needs */
-    margin: 0 auto; /* Centers the .gymImgs div */
-    height: 60vh; /* Adjust to suit your needs */
+    width: 80%;
+    margin: 0 auto;
+    height: 60vh;
+    margin-bottom: 20px; /* Add space between the images and the buttons */
 }
 
-.leftImages, .rightUpImages, .rightDownImages {
+.leftImages, .rightUpImages {
     flex: 1;
     height: 100%;
+}
+.rightDownImages {
+    flex: 1;
+    height: 98%;
 }
 
 .leftImages img, .rightUpImages img, .rightDownImages img {
@@ -35,4 +43,29 @@
 
 .rightDownImages img {
     height: 50%;
+}
+
+.point-Buttons {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.point-Button {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 2px;
+    cursor: pointer;
+}
+
+.point-Button.active {
+    background-color: green;
+    color: white;
+}
+
+.selected-Content {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
 }

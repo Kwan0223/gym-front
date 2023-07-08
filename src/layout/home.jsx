@@ -2,6 +2,7 @@ import React from 'react';
 
 import '../css/index.css';
 import Content from "./content";
+import '../css/ImageSlider.css'
 
 
 const Home = () => {
@@ -9,8 +10,8 @@ const Home = () => {
         <>
             <Content/>
         </>
-
     );
 };
+
 
 export default Home;

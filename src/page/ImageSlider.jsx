@@ -1,18 +1,15 @@
-import React, {useEffect} from 'react';
-import Slider from "react-slick"
+import React from 'react';
+import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "../css/ImageSlider.css";
 
 const ImageSlider = (props) => {
-    const images = props.props.data.pointImagePath
-    const data = props.props.data
+     const images =props.imageSliderProps;
 
-    useEffect( () => {
-        // console.log("TES props ::" , props );
-        console.log("TES images ::" , images );
-        // console.log("TES data ::" , data );
+     console.log("Test props Image slider ::: " , images)
 
-    }, [])
+
 
     const settings = {
         dots: false,
@@ -21,21 +18,20 @@ const ImageSlider = (props) => {
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: false,
-        autoplaySpeed: 3000,
-        adaptiveHeight: true
+        autoplaySpeed: 3000
     };
 
     return (
-        <div>
-            <Slider {...settings}>
-                {images.map((image, index) => (
-                    <div key={index} className="card-image-container">
-                        <img className="card-image" src={image} alt={`room-${index}`}/>
-                    </div>
-                ))}
-            </Slider>
-            <span>{data.pointName}</span>
-
+        <div className="slider-container">
+            <div className="slider-section">
+                <Slider {...settings}>
+                    {images && images.map((image, index) => (
+                        <div key={index} className="card-image-container">
+                            <img className="card-image" src={image} alt={`room-${index}`} />
+                        </div>
+                    ))}
+                </Slider>
+            </div>
         </div>
     );
 };
