@@ -16,9 +16,6 @@ const Header = () => {
         }
     };
 
-    useEffect(() => {
-        console.log('TEST Header : ', user);
-    }, []);
 
     const handlePageMove = (id) => {
         switch (id) {

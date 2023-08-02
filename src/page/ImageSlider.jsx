@@ -7,7 +7,6 @@ import "../css/ImageSlider.css";
 const ImageSlider = (props) => {
      const images =props.imageSliderProps;
 
-     console.log("Test props Image slider ::: " , images)
 
 
 

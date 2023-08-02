@@ -3,22 +3,11 @@ import {useLocation} from 'react-router-dom';
 import '../css/Detail.css';
 import PointInfo from "./PointInfo";
 import TrainerInfo from "./TrainerInfo ";
-import ReservationInfo from "./ReservationInfo ";
 
 const Detail = () => {
     const location = useLocation();
     const {data} = location.state;
     const [activeTab, setActiveTab] = useState('point-Info');
-
-
-    useEffect( () => {
-        // console.log("TES props ::" , props );
-        console.log("TES images ::" , data );
-        // handleTabChange("point-Info")
-        console.log("TEST activeTab : " , activeTab)
-
-    }, [activeTab])
-
 
 
 
@@ -42,12 +31,10 @@ const Detail = () => {
             <div className="point-Botton">
                 <button className={`point-Button ${activeTab === 'point-Info' ? 'active' : ''}`} onClick={() => setActiveTab("point-Info")}>헬스장 정보</button>
                 <button className={`point-Button ${activeTab === 'point-TrainerInfo' ? 'active' : ''}`} onClick={() => setActiveTab("point-TrainerInfo")}>트레이너 정보</button>
-                <button className={`point-Button ${activeTab === 'reservation-Info' ? 'active' : ''}`} onClick={() => setActiveTab("reservation-Info")}>예약</button>
             </div>
             <div className="select-Content">
                 {activeTab === 'point-Info' && <PointInfo data={data} />}
                 {activeTab === 'point-TrainerInfo' && <TrainerInfo data={data} />}
-                {activeTab === 'reservation-Info' && <ReservationInfo data={data} />}
             </div>
         </div>
     );

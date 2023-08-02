@@ -1,16 +1,58 @@
 import React, {useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import ImageSlider from "./ImageSlider";
-import '../css/Card.css';
+import '../css/PointInfo.css';
+import { Map, MapMarker } from 'react-kakao-maps-sdk';
+import KakaoMap from "./KakaoMap";
 
 const PointInfo = (props) => {
     useEffect(() => {
-       console.log("TEST PointInfo Data : " , props)
+        console.log("TEST PointInfo Data : " , props)
     },[])
 
+    let data = props.data;
+
+    // const container = document.getElementById('kakaoMap');
+    // const options = {
+    //     center : new Kakao.maps.L
+    // }
+
     return (
-        <div>
-            <h2>PointInfo</h2>
+        <div className="PointInfo">
+            <div className="KakaoMap">
+                카카오 맵 자리
+                <KakaoMap address={data.pointAddress}></KakaoMap>
+            </div>
+            <div className="gymInfo">
+                <div className="gymAddress">
+                    <span>주소</span>
+                    <span>{data.pointAddress}</span>
+                </div>
+                <div className="gymNumber">
+                    <span>전화번호</span>
+                    <span>{data.managerPhone}</span>
+                </div>
+                <div className="gymPrice">
+                    <span>가격</span>
+                    <div>
+                        {data.productInfo.map((item, index) =>(
+                            <span key={index}>{item}</span>
+                        ))}
+                    </div>
+                </div>
+                <div className="gymTags">
+                    <span>해시태그</span>
+                    <div>
+                        {data.tagInfo.map((item, index) => (
+                            <span key={index}>#{item}</span>
+                        ))}
+                    </div>
+                </div>
+                <div className="gymInfoText">
+                    <span>소개글</span>
+                    <span className="infoText">{data.info}</span>
+                </div>
+            </div>
         </div>
     );
 };

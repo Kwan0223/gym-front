@@ -26,7 +26,6 @@ const Content = () => {
             .then(response => {
                 setPoints(response.data);
                 setTotalPages(response.data.totalPages);
-                console.error('response.data!', response.data);
 
             })
             .catch(error => {

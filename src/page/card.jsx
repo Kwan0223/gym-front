@@ -2,25 +2,35 @@ import {useNavigate} from 'react-router-dom';
 import ImageSlider from "./ImageSlider";
 import 'react-datepicker/dist/react-datepicker.css';
 import '../css/Card.css';
+import Calendar from "./Calender"  // Fixed the import here
 import Modal from 'react-modal';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css'
-import {useState} from "react";
+import {useContext, useEffect, useState} from "react";
+import {UserContext} from "../components/UserProvider";
 
-const Card = ({data, type}) => {
+const Card = ({ data, type, totalData}) => {
+    const { user, setUser, logout } = useContext(UserContext);
+
+    useEffect(()=> {
+        console.log("TEST USSER ::: " , user)
+    },[user])
 
     const navigate = useNavigate();
-    let result;
+    let history;
     let imageSliderProps;
-    const [startDate, setStartDate] = useState(new Date());
     const [modalIsOpen, setIsOpen] = useState(false);
+
+    useEffect(() =>{
+        console.log("TEST !!!!!!!!  Card DATA : " , data)
+        console.log("TEST !!!!!!!!  Card totalData : " , totalData)
+    },[]);
 
     if (type === 'content') {
         imageSliderProps = data.pointImagePath;
     } else if (type === 'trainer') {
         imageSliderProps = data.trainerImage;
-        result = data.trainerHistory[0].split(',').map(s => s.trim());
-    }
+        history = data.trainerHistory;
+}
+
     const handleClick = () => {
         navigate(`/Detail/${data.pointName}`, {state: {data: data}});
     };
@@ -32,6 +42,22 @@ const Card = ({data, type}) => {
     const closeModal = () => {
         setIsOpen(false);
     }
+
+    const customStyles = {
+        content : {
+            top                   : '50%',
+            left                  : '50%',
+            right                 : 'auto',
+            bottom                : 'auto',
+            marginRight           : '-50%',
+            transform             : 'translate(-50%, -50%)',
+            width                 : '50%',
+            height                : '50%',
+            border                : '1px solid green',
+            borderRadius          : '10px'
+        }
+    };
+
     return (
         type === 'content' ? (
             <div className="card m-2" onClick={handleClick}>
@@ -61,8 +87,8 @@ const Card = ({data, type}) => {
                                 </div>
                                 <span className="trainer-label">trainer</span>
                                 <h2>{data.name}</h2>
-                                <span className="prize-history-label">Prize history</span>
-                                {result.map((item, index) => (
+                                <span className="prize-history-label">트레이너 이력</span>
+                                {history.map((item, index) => (
                                     <div key={index}>
                                         <span>{item}</span>
                                     </div>
@@ -75,11 +101,20 @@ const Card = ({data, type}) => {
                         isOpen={modalIsOpen}
                         onRequestClose={closeModal}
                         contentLabel="Reservation Modal"
+                        style={customStyles}
                     >
-                        <h2>Make a reservation</h2>
-                        <button onClick={closeModal}>close</button>
-                        <Calendar onChange={setStartDate} value={startDate} />
+                        <div className="modal-header">
+                            <h2>Make a reservation</h2>
+                            <button onClick={closeModal}>close</button>
+                        </div>
+                        <div className="modal-content">
+                            <div className="left-content">
+                               <Calendar trainer = {data}totalData = {totalData}/>
+                            </div>
+                        </div>
                     </Modal>
+
+
                 </div>
             ) : null
         )
