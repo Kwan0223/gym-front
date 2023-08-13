@@ -12,15 +12,10 @@ const PointInfo = (props) => {
 
     let data = props.data;
 
-    // const container = document.getElementById('kakaoMap');
-    // const options = {
-    //     center : new Kakao.maps.L
-    // }
-
     return (
         <div className="PointInfo">
             <div className="KakaoMap">
-                카카오 맵 자리
+
                 <KakaoMap address={data.pointAddress}></KakaoMap>
             </div>
             <div className="gymInfo">

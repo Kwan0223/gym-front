@@ -4,7 +4,7 @@ const KakaoMap = ({ address }) => {
     const [map, setMap] = useState(null);
 
     useEffect(() => {
-        if (window.kakao && window.kakao.maps) {
+        if (window.kakao && window.kakao.maps && map !== null) {
             // 주소-좌표 변환 객체를 생성합니다
             const geocoder = new window.kakao.maps.services.Geocoder();
 
@@ -42,9 +42,7 @@ const KakaoMap = ({ address }) => {
     }, []);
 
     return (
-        // <div id="map" style={{width: '500px', height: '400px'}}></div>
         <div id="map" style={{width: '100%', height: '100%'}}></div>
-
     );
 };
 

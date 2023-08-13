@@ -36,6 +36,11 @@ const Card = ({ data, type, totalData}) => {
     };
 
     const handleReservation = () => {
+        console.log("handleReservation is called!");
+        if(!user){
+            alert("로그인을 진행해야합니다.")
+            return;
+        }
         setIsOpen(true);
     }
 
@@ -109,7 +114,7 @@ const Card = ({ data, type, totalData}) => {
                         </div>
                         <div className="modal-content">
                             <div className="left-content">
-                               <Calendar trainer = {data}totalData = {totalData}/>
+                                <Calendar data={data} totalData={totalData} closeModal={closeModal} />
                             </div>
                         </div>
                     </Modal>

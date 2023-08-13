@@ -149,3 +149,16 @@
     background-color: #00ff00;
     color: #fff;
 }
+
+.time-button.booked {
+    background-color: red;
+    color: white;
+    cursor: not-allowed; /* 마우스 포인터를 '금지' 아이콘으로 변경 */
+    opacity: 0.7; /* 버튼을 약간 투명하게 만들어 예약됨을 더 명확하게 나타냅니다. */
+}
+
+/* 선택된 버튼과 예약된 버튼의 스타일이 충돌하는 경우를 대비하여 선택된 버튼의 스타일을 더 강화시킵니다. */
+.time-button.selected {
+    background-color: blue; /* 선택된 버튼의 배경색을 파란색으로 가정합니다. */
+    color: white;
+}
