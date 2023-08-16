@@ -22,7 +22,6 @@
     "react-slick": "^0.29.0",
     "slick-carousel": "^1.8.1",
     "sockjs-client": "^1.6.1",
-    "stompjs": "^2.3.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

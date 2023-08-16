@@ -84,4 +84,37 @@
     font-weight: bold;
 }
 
+.notification-dropdown {
+    position: absolute;
+    right: 0;  /* 아이콘의 오른쪽에 위치하도록 */
+    top: 100%; /* 아이콘 바로 아래에 위치하도록 */
+    width: 250px; /* 원하는 너비 설정 */
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+    border-radius: 5px;
+    z-index: 1000; /* 다른 요소 위에 올라오도록 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 약간의 그림자 효과 추가 */
+    padding: 10px 0;
+}
+
+.notification-item {
+    padding: 10px 15px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+    transition: background-color 0.3s ease;
+}
+
+.notification-item:last-child {
+    border-bottom: none;  /* 마지막 아이템에는 하단 테두리 제거 */
+}
+
+.notification-item:hover {
+    background-color: #f6f6f6; /* 호버 효과 */
+}
+
+
 
