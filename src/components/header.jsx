@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from './UserProvider';
 import axios from 'axios';
@@ -9,10 +9,10 @@ import '../css/Header.css';
 const Header = () => {
     const navigate = useNavigate();
     const { user, logout } = useContext(UserContext);
-    const [notificationCount, setNotificationCount] = React.useState(3);
+    const [notificationCount, setNotificationCount] = useState('0');
 
-    const [notifications, setNotifications] = React.useState([]);
-    const [showDropdown, setShowDropdown] = React.useState(false);
+    const [notifications, setNotifications] = useState([]);
+    const [showDropdown, setShowDropdown] = useState(false);
 
     const toggleDropdown = () => {
         setShowDropdown(!showDropdown);
@@ -21,11 +21,7 @@ const Header = () => {
     useEffect(() => {
         console.log('TEST NotificationCount ::  ' , notificationCount)
     },[notificationCount])
-    useEffect(() => {
-        console.log('TEST Header user ::  ' , user)
-        console.log('TEST  Header user Id::  ' , user.userId)
 
-    },[])
 
     useEffect(() => {
         if (!user) return;
@@ -39,11 +35,17 @@ const Header = () => {
         });
 
         stompClient.onConnect = () => {
-            console.log('TEST Header user ::  ' , user)
-            console.log('TEST  Header user Id::  ' , user.userId)
             console.log('Connected to WebSocket');
+            console.log('Is stompClient connected?', stompClient.connected);
+            console.log('URL Check?', user,user.userId,'/topic/notifications');
+            // stompClient.subscribe(`/topic/notifications`, (notification) => {
+            //     console.log('Received notification', notification.body);
+            //     setNotifications((prev) => [...prev, notification.body]);
+            //     setNotificationCount((prevCount) => prevCount + 1);
+            // });
+
             stompClient.subscribe(`user/${user.userId}/topic/notifications`, (notification) => {
-                console.log('Received to WebSocket');
+                console.log('URL Check?', user,user.userId,'/topic/notifications');
                 console.log('Received notification', notification.body);
                 setNotifications((prev) => [...prev, notification.body]); // 알림 추가
                 setNotificationCount((prevCount) => prevCount + 1); // 카운터 증가
