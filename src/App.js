@@ -11,6 +11,7 @@ import SignUp from "./page/SignUp";
 import MyPage from "./page/MyPage"; // 추가
 import { UserProvider } from './components/UserProvider'; // or wherever you define UserProvider
 import 'bootstrap/dist/css/bootstrap.min.css';
+import SessionCheck from "./components/SessionCheck";
 
 
 
@@ -20,6 +21,7 @@ function App() {
         <UserProvider>
             <div className="App">
                 <Router>
+                    <SessionCheck/>
                     <Header/>
                     <Routes>
                         <Route path="/" element={<Content/>}/>

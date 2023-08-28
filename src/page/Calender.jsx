@@ -7,15 +7,6 @@ import {UserContext} from "../components/UserProvider";
 
 // const Calendar = (data, totaldata , closeModal) => {
 const Calendar = ({ data, totalData, closeModal }) => {
-    console.log('Calendar component is rendered!');
-    console.log('Calendar component is rendered! :: ' , data);
-    console.log('Calendar component is trainerId! :: ' , data.trainerId);
-    console.log('Calendar component is totalData! :: ' , totalData);
-    console.log('Calendar component is totalData.data! :: ' , totalData.data);
-    console.log('Calendar component is totalData.data! :: ' , totalData.data.pointId);
-    useEffect(() => {
-       console.log('TEST START DATA ::: ' , data )
-    },[])
 
     const {user, setUser, logout} = useContext(UserContext);
     const [selectedDate, setSelectedDate] = useState(null);
@@ -34,7 +25,6 @@ const Calendar = ({ data, totalData, closeModal }) => {
 
     const [bookedTimeSlots, setBookedTimeSlots] = useState([]);
 
-
     const [timeSlots, setTimeSlots] = useState([
         '09:00 ~ 10:00',
         '10:00 ~ 11:00',
@@ -50,9 +40,6 @@ const Calendar = ({ data, totalData, closeModal }) => {
         '20:00 ~ 21:00',
         '21:00 ~ 22:00'
     ]);
-
-    const pointId = totalData.data.pointId;
-    const tariner = data.trainer;
 
     useEffect(() => {
         console.log(' test reservation ::', reservation)
@@ -136,10 +123,7 @@ const Calendar = ({ data, totalData, closeModal }) => {
     }
 
     useEffect(() =>{
-        console.log('TEST :::: reservationreservationreservation!!!!  ' , reservation)
-        console.log('TEST :::: reservationreservationreservation!!!!  ' , reservation)
-        console.log('TEST :::: reservationreservationreservation!!!!  ' , reservation)
-        console.log('TEST :::: asdasd!!!!  ' , closeModal)
+
     },[reservation])
     const formatDate = (date) => {
         const year = date.getFullYear();
@@ -170,57 +154,60 @@ const Calendar = ({ data, totalData, closeModal }) => {
                     />
                     {displayTimeButton && (
                         <div className="time-container">
-                            {timeSlots.map((timeSlot, index) => {
-                                const [start, end] = timeSlot.split('~').map(time => time.trim());
-                                const isBooked = bookedTimeSlots.includes(timeSlot); // 해당 시간 슬롯이 예약되었는지 확인
-                                console.log('TEST isBooker :: ', isBooked)
-                                return (
-                                    <button
-                                        key={index}
-                                        className={`time-button ${selectedTime.start === start && selectedTime.end === end ? 'selected' : ''} ${isBooked ? 'booked' : ''}`}
-                                        onClick={() => !isBooked && setSelectedTime({start, end})}
-                                        disabled={isBooked} // 예약된 경우 버튼 비활성화
-                                    >
-                                        {start} ~ {end}
-                                    </button>
-                                )
-                            })}
-                            <button onClick={handleReturn}>날짜 다시고르기</button>
-                            <button onClick={handleReservation}>예약하러가기</button>
+                            <div className="time-list">
+                                {timeSlots.map((timeSlot, index) => {
+                                    const [start, end] = timeSlot.split('~').map(time => time.trim());
+                                    const isBooked = bookedTimeSlots.includes(timeSlot); // 해당 시간 슬롯이 예약되었는지 확인
+                                    return (
+                                        <button
+                                            key={index}
+                                            className={`time-button ${selectedTime.start === start && selectedTime.end === end ? 'selected' : ''} ${isBooked ? 'booked' : ''}`}
+                                            onClick={() => !isBooked && setSelectedTime({start, end})}
+                                            disabled={isBooked} // 예약된 경우 버튼 비활성화
+                                        >
+                                            {start} ~ {end}
+                                        </button>
+                                    )
+                                })}
+                            </div>
+                            <div className="time-button-check">
+                                <button className="returnDate" onClick={handleReturn}>날짜 다시고르기</button>
+                                <button className="notificationCheck" onClick={handleReservation}>예약하러가기</button>
+                            </div>
                         </div>
                     )}
                 </>
             ) : (
                 <div>
                     <div className="input-container">
-                        <div>
-                            <label htmlFor="name">Name:</label>
+                        <div className = "check-name">
+                            <label htmlFor="name">Name</label>
                             <input type="text" id="name" name="name" defaultValue={user.name} readOnly/>
                         </div>
                         <div>
-                            <label htmlFor="gymName">Gym Name:</label>
+                            <label htmlFor="gymName">Gym Name</label>
                             <input type="text" id="gymName" name="gymName" defaultValue={totalData.data.pointName}
                                    readOnly/>
                         </div>
                         <div>
-                            <label htmlFor="trainerName">Trainer Name:</label>
+                            <label htmlFor="trainerName">Trainer Name</label>
                             <input type="text" id="trainerName" name="trainerName" defaultValue={data.name}
                                    readOnly/>
                         </div>
                         <div>
-                            <label htmlFor="date">Date:</label>
+                            <label htmlFor="date">Date</label>
                             <input type="text" id="date" name="date"
                                    defaultValue={selectedDate ? formatDate(selectedDate) : ''} readOnly/>
                         </div>
                         <div>
-                            <label htmlFor="hour">Hour:</label>
+                            <label htmlFor="hour">Hour</label>
                             <input type="text" id="hour" name="hour"
                                    defaultValue={`${selectedTime.start} ~ ${selectedTime.end}`} readOnly/>
                         </div>
                     </div>
-                    <div className="button-container">
-                        <button onClick={submitReservation}>예약완료</button>
-                        <button onClick={handleCloseAndCancel}>예약취소</button>
+                    <div className="button-container-notification">
+                        <button className="reservationComplete" onClick={submitReservation}>예약완료</button>
+                        <button className="reservationCancel " onClick={handleCloseAndCancel}>예약취소</button>
                     </div>
                 </div>
             )}

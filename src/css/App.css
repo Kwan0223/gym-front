@@ -1,5 +1,12 @@
 .App {
   text-align: center;
+  max-width: 2000px;       /* 웹사이트의 최대 너비 설정 */
+  margin: 0 auto;          /* 좌우 중앙 정렬 */
+  background-color: white; /* 웹사이트 배경색 설정 */
+}
+
+body {
+  background-color: #f4f4f4;  /* 전체 배경색 설정 */
 }
 
 .App-logo {
@@ -36,3 +43,6 @@
     transform: rotate(360deg);
   }
 }
+
+
+

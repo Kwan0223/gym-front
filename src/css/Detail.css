@@ -57,10 +57,22 @@
     padding: 10px 20px;
     margin: 0 2px;
     cursor: pointer;
+    transition: background-color 0.3s; /* 트랜지션 효과 추가 */
 }
 
-.point-Button.active {
-    background-color: green;
+.point-Button:hover {
+    background-color: #ddd; /* 호버 효과 추가 */
+}
+
+/* 헬스장 정보 활성 버튼 스타일 */
+.point-Button.point-Info.active {
+    background-color: #007bff;
+    color: white;
+}
+
+/* 트레이너 정보 활성 버튼 스타일 */
+.point-Button.point-TrainerInfo.active {
+    background-color: #4CAF50;
     color: white;
 }
 

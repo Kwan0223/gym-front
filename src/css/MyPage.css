@@ -23,6 +23,7 @@
 .edit-MyPage-button {
     padding: 10px 20px;
     background-color: #007bff; /* blue */
+    /*background-color: #a3a2a2; !* blue *!*/
     color: #fff;
     border: none;
     border-radius: 25px; /* round ends */

@@ -2,8 +2,7 @@ import React, {useContext, useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {UserContext} from './UserProvider';
 import axios from 'axios';
-import SockJS from 'sockjs-client';
-import {Client} from '@stomp/stompjs';
+
 import '../css/Header.css';
 
 const Header = () => {
@@ -25,55 +24,6 @@ const Header = () => {
     useEffect(() => {
         console.log('TEST Notification ::  ', notifications)
     }, [notifications])
-
-
-    // useEffect(() => {
-    //     if (!user) return;
-    //
-    //     const socket = new SockJS('http://localhost:8080/ws');
-    //     const stompClient = new Client({
-    //         webSocketFactory: () => socket,
-    //         debug: (str) => {
-    //             console.log(str); // WebSocket 디버그 로그 출력
-    //         },
-    //         connectHeaders: {
-    //             'user-id': user.userId
-    //         }
-    //     });
-    //
-    //
-    //
-    //     stompClient.onConnect = () => {
-    //         console.log('Connected to WebSocket');
-    //         console.log('Connected to stompClient ::: ' , stompClient);
-    //         console.log('Is stompClient connected?', stompClient.connected);
-    //         console.log('URL Check?', user, user.userId, '/topic/notifications');
-    //
-    //         stompClient.subscribe(`/topic/notifications`, (notification) => {
-    //             console.log('Received notification', notification.body);
-    //             setNotifications((prev) => [...prev, notification.body]);
-    //             setNotificationCount((prevCount) => prevCount + 1);
-    //         });
-    //         // stompClient.subscribe(`/user/topic/notifications`, (notification) => {
-    //         //     console.log('URL Check?', user, user.userId, '/topic/notifications');
-    //         //     console.log('Received notification', notification.body);
-    //         //     setNotifications((prev) => [...prev, notification.body]); // 알림 추가
-    //         //     setNotificationCount((prevCount) => prevCount + 1); // 카운터 증가
-    //         //
-    //         // });
-    //     };
-    //
-    //     stompClient.onStompError = (frame) => {
-    //         console.error('STOMP error:', frame.headers['message']);
-    //     };
-    //
-    //     stompClient.activate();
-    //
-    //     return () => {
-    //         stompClient.deactivate();
-    //     };
-    // }, [user]);
-
 
 
     useEffect(() => {
@@ -149,7 +99,7 @@ const Header = () => {
                         {user?.name && <p className="welcome-text">Welcome {user.name}</p>}
 
                         {!user ? (
-                            <button onClick={() => handlePageMove('login')} className="login-button">
+                            <button onClick={() => handlePageMove('login')} className="head-login-button">
                                 Login
                             </button>
                         ) : (

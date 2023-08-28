@@ -1,11 +1,13 @@
 .react-datepicker {
     position: fixed;
+    align-items: center;
     top: 50px;
     left: 50%;
     width: 680px;
     height: 385px;
     border: transparent;
     border-radius: 15px;
+
 }
 
 .react-datepicker__input-container > input {
@@ -118,18 +120,22 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-top: 20%;
+    margin-top: 5%;
+    border: 1px solid black;
+    border-radius: 5px; /* 끝 부분을 둥글게 */
+
+
 }
 
 .input-container div {
     display: flex;
     flex-direction: column;
-    width: 45%;
+    width: 40%;
     margin-left: 0px;
 }
 
-.button-container {
-    margin-top: 10px;
+.button-container-notification {
+    margin-top: 20px;
     display: flex;
     justify-content: center; /* Centers the buttons */
 
@@ -148,6 +154,11 @@
 .button-container button:hover {
     background-color: #00ff00;
     color: #fff;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 20px;
+    margin-top: 20px;
 }
 
 .time-button.booked {
@@ -161,4 +172,31 @@
 .time-button.selected {
     background-color: blue; /* 선택된 버튼의 배경색을 파란색으로 가정합니다. */
     color: white;
+}
+
+.time-button-check {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 0 20px;
+    margin-top: 20px; /* Add some margin to separate it from the time slots */
+}
+
+.returnDate{
+    margin-right: 20px;
+    background-color: red;
+
+}
+.notificationCheck{
+    background-color: blue; /* 선택된 버튼의 배경색을 파란색으로 가정합니다. */
+
+}
+
+.input-container > div {
+    margin: 15px;  /* 상하 좌우 간격 조정 */
+}
+
+.input-container label {
+    font-size: 2em;  /* 텍스트 크기 2배로 조정 */
+    font-weight: bold;  /* 텍스트를 두껍게 */
 }

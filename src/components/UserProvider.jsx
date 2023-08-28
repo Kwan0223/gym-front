@@ -4,7 +4,8 @@ import axios from "axios";
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-    const [user, setUser] = useState('user');
+    const [user, setUser] = useState('login');
+
 
     const logout = () => {
         setUser(null);

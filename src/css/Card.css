@@ -62,7 +62,7 @@
 .card-trainer .card-image-container {
     position: relative;
     width: 100%;
-    padding-top: 112.5%; /* Double of 56.25% to maintain the ratio */
+    padding-top: 112.5%;
     overflow: hidden;
 }
 
@@ -72,6 +72,18 @@
     right: 0;
 }
 
+.button-group {
+    flex-direction: column;
+    align-items: flex-end;
+    margin-bottom: 20px; /* 버튼과 트레이너 라벨 간의 간격 */
+}
+
+.button-group button {
+    border-radius: 25%;
+    margin-right: 10px;
+    padding: 10px 20px;
+}
+
 .trainer-label {
     display: block;
     font-weight: bold;
@@ -79,42 +91,51 @@
 }
 
 .prize-history-label {
+    margin-bottom: 10px; /* 트레이너 이력과 map() 내용 간의 간격 늘리기 */
     display: block;
     margin-top: 20px;
+    text-align: left;  /* 왼쪽으로 붙이기 */
 }
 
 .card-body {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-}
-
-.button-group {
-    /*display: flex;*/
-    flex-direction: column;
-    align-items: flex-end;
-}
-.button-group button {
-    border-radius: 25%;
-    margin-right: 10px;
-    padding: 10px 20px;
+    padding: 10px; /* 원하는 패딩 값으로 조절 */
+    margin-bottom: 0; /* 추가 */
 }
 
 .modal-header {
     text-align: right;
+    padding: 10px; /* 원하는 패딩 값으로 조절 */
+    padding-top: 5px; /* 추가 */
+
 }
 
+/* trainer-info 스타일 추가 */
+.trainer-info {
+    width: 100%; /* 꽉 차게 설정 */
+    border: 1px solid black;
+    border-radius: 5px; /* 끝 부분을 둥글게 */
+    padding: 10px; /* 테두리와 내용 사이의 간격 */
+}
 
+.button-container-notification button {
+    text-align: center;
+    font-weight: 500;
+    border-radius: 6px;
+    margin-right: 0.7%;
+    padding: 1% 2.2%;
+    font-size: 1.1vw;
+    cursor: pointer;
+    width: 13%;
+    transition: background-color 0.3s ease-in-out;
+}
 
-/*.modal-content {*/
-/*    display: flex;*/
-/*    justify-content: space-between;*/
-/*    align-items: stretch; !* ensure children stretch to fill the container *!*/
-/*}*/
+.reservationComplete {
+    background-color: #007bff;
+}
 
-/*.left-content, .right-content {*/
-/*    display: flex; !* make the children flex containers as well *!*/
-/*    flex-direction: column;*/
-/*    justify-content: start; !* align content at the start *!*/
-/*    width: 50%;*/
-/*}*/
+.reservationCancel {
+    background-color: #ff0000;
+}

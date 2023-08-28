@@ -2,6 +2,8 @@
     background-color: white;
     border-bottom: 1px solid #e5e7eb;
     width: 100%;
+    max-width: 2000px;  /* 최대 너비 설정 */
+    margin: 0 auto;     /* 좌우 중앙 정렬 */
 }
 
 .nav-content {
@@ -44,7 +46,7 @@
     font-size: 1.2vw;
 }
 
-.login-button, .logout-button, .my-page-button {
+.head-login-button, .logout-button, .my-page-button {
     text-align: center;
     font-weight: 500;
     border-radius: 6px;
@@ -54,10 +56,17 @@
     cursor: pointer;
 }
 
-.login-button, .logout-button . my-page-button {
-    background-color: white;
-    color: #4b5563;
+.head-login-button, .logout-button  {
+    background-color: #007bff;
+    width: 13%;
     transition: background-color 0.3s ease-in-out;
+}
+
+.my-page-button{
+    width: 13%;
+    background-color: #4CAF50;
+    transition: background-color 0.3s ease-in-out;
+
 }
 
 .notification-icon {

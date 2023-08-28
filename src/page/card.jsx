@@ -7,29 +7,29 @@ import Modal from 'react-modal';
 import {useContext, useEffect, useState} from "react";
 import {UserContext} from "../components/UserProvider";
 
-const Card = ({ data, type, totalData}) => {
-    const { user, setUser, logout } = useContext(UserContext);
+const Card = ({data, type, totalData}) => {
+    const {user, setUser, logout} = useContext(UserContext);
 
-    useEffect(()=> {
-        console.log("TEST USSER ::: " , user)
-    },[user])
+    useEffect(() => {
+        console.log("TEST USSER ::: ", user)
+    }, [user])
 
     const navigate = useNavigate();
     let history;
     let imageSliderProps;
     const [modalIsOpen, setIsOpen] = useState(false);
 
-    useEffect(() =>{
-        console.log("TEST !!!!!!!!  Card DATA : " , data)
-        console.log("TEST !!!!!!!!  Card totalData : " , totalData)
-    },[]);
+    useEffect(() => {
+        console.log("TEST !!!!!!!!  Card DATA : ", data)
+        console.log("TEST !!!!!!!!  Card totalData : ", totalData)
+    }, []);
 
     if (type === 'content') {
         imageSliderProps = data.pointImagePath;
     } else if (type === 'trainer') {
         imageSliderProps = data.trainerImage;
         history = data.trainerHistory;
-}
+    }
 
     const handleClick = () => {
         navigate(`/Detail/${data.pointName}`, {state: {data: data}});
@@ -37,7 +37,7 @@ const Card = ({ data, type, totalData}) => {
 
     const handleReservation = () => {
         console.log("handleReservation is called!");
-        if(!user){
+        if (!user) {
             alert("로그인을 진행해야합니다.")
             return;
         }
@@ -49,19 +49,42 @@ const Card = ({ data, type, totalData}) => {
     }
 
     const customStyles = {
-        content : {
-            top                   : '50%',
-            left                  : '50%',
-            right                 : 'auto',
-            bottom                : 'auto',
-            marginRight           : '-50%',
-            transform             : 'translate(-50%, -50%)',
-            width                 : '50%',
-            height                : '50%',
-            border                : '1px solid green',
-            borderRadius          : '10px'
+        content: {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)',
+            width: '60%',
+            height: '60%',
+            border: '1px solid green',
+            borderRadius: '10px',
+
         }
     };
+
+
+
+    // const customStyles = {
+    //     content: {
+    //         display: 'flex',
+    //         flexDirection: 'column',
+    //         alignItems: 'center',
+    //         justifyContent: 'center',
+    //         top: '50%',
+    //         left: '50%',
+    //         right: 'auto',
+    //         bottom: 'auto',
+    //         // marginRight: '-50%',
+    //         transform: 'translate(-50%, -50%)',
+    //         width: '60%',
+    //         height: '60%',
+    //         border: '1px solid green',
+    //         borderRadius: '10px',
+    //     }
+    // };
+
 
     return (
         type === 'content' ? (
@@ -87,20 +110,23 @@ const Card = ({ data, type, totalData}) => {
                         <div className="col-md-6">
                             <div className="card-body">
                                 <div className="button-group">
-                                    <button>P.T 문의 및 상담</button>
                                     <button onClick={handleReservation}>Make a P.T reservation</button>
                                 </div>
-                                <span className="trainer-label">trainer</span>
-                                <h2>{data.name}</h2>
-                                <span className="prize-history-label">트레이너 이력</span>
-                                {history.map((item, index) => (
-                                    <div key={index}>
-                                        <span>{item}</span>
+                                <h2 className="trainer-label">trainer
+                                    <span className="trainer-name">{data.name}</span>
+                                </h2>
+                                <div className="trainer-info">
+                                    <span className="prize-history-label">트레이너 이력</span>
+                                    <div className="prize-history-label-content">
+                                        {history.map((item, index) => (
+                                            <div key={index}>
+                                                <span>{item}</span>
+                                            </div>
+                                        ))}
                                     </div>
-                                ))}
+                                </div>
                             </div>
                         </div>
-
                     </div>
                     <Modal
                         isOpen={modalIsOpen}
@@ -113,13 +139,9 @@ const Card = ({ data, type, totalData}) => {
                             <button onClick={closeModal}>close</button>
                         </div>
                         <div className="modal-content">
-                            <div className="left-content">
-                                <Calendar data={data} totalData={totalData} closeModal={closeModal} />
-                            </div>
+                                <Calendar data={data} totalData={totalData} closeModal={closeModal}/>
                         </div>
                     </Modal>
-
-
                 </div>
             ) : null
         )

@@ -20,15 +20,15 @@ const PointInfo = (props) => {
             </div>
             <div className="gymInfo">
                 <div className="gymAddress">
-                    <span>주소</span>
+                    <span className="address">주소</span>
                     <span>{data.pointAddress}</span>
                 </div>
                 <div className="gymNumber">
-                    <span>전화번호</span>
+                    <span  className="phone">전화번호</span>
                     <span>{data.managerPhone}</span>
                 </div>
                 <div className="gymPrice">
-                    <span>가격</span>
+                    <span className="price">가격</span>
                     <div>
                         {data.productInfo.map((item, index) =>(
                             <span key={index}>{item}</span>
@@ -36,7 +36,7 @@ const PointInfo = (props) => {
                     </div>
                 </div>
                 <div className="gymTags">
-                    <span>해시태그</span>
+                    <span className="tag">해시태그</span>
                     <div>
                         {data.tagInfo.map((item, index) => (
                             <span key={index}>#{item}</span>
@@ -44,7 +44,7 @@ const PointInfo = (props) => {
                     </div>
                 </div>
                 <div className="gymInfoText">
-                    <span>소개글</span>
+                    <span className="info">소개글</span>
                     <span className="infoText">{data.info}</span>
                 </div>
             </div>
