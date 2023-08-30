@@ -25,6 +25,24 @@ const Header = () => {
         console.log('TEST Notification ::  ', notifications)
     }, [notifications])
 
+    useEffect(() => {
+        console.log('TEST user Check ::  ', user)
+    }, [])
+
+    const checkNotificationList = async () => {
+        const url = `http://localhost:8080/api/v1/notification/${user.userId}`;
+
+        const res = await axios.get(url);
+        if (res.status === 200) {
+            // setNotifications(res.data);
+            const sortedNotifications = res.data.sort((a, b) => b.noticeId - a.noticeId);
+            const top10Notifications = sortedNotifications.slice(0, 10);
+            setNotifications(top10Notifications);
+
+            console.log('TEST Notification List Check ::  ', top10Notifications);
+
+        }
+    };
 
     useEffect(() => {
         if (!user) return;
@@ -112,14 +130,17 @@ const Header = () => {
                         </button>
                         {user && (
                             <div className="notification-icon" onClick={toggleDropdown}>
-                                <img src="/image/—Pngtree—bell vector icon_3791349.png" alt="Notification Icon"/>
+                                <img src="/image/—Pngtree—bell vector icon_3791349.png" alt="Notification Icon" onClick={checkNotificationList}/>
                                 {notificationCount > 0 &&
                                     <span className="notification-count">{notificationCount}</span>}
                                 {showDropdown && (
                                     <div className="notification-dropdown">
                                         {notifications.map((notification, idx) => (
-                                            <div key={idx} className="notification-item">
-                                                {notification}
+                                            <div
+                                                key={idx}
+                                                className={`notification-item ${idx < notificationCount ? "unread" : ""}`}
+                                            >
+                                                {notification.content}
                                             </div>
                                         ))}
                                     </div>

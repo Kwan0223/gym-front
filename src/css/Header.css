@@ -125,5 +125,14 @@
     background-color: #f6f6f6; /* 호버 효과 */
 }
 
+.notification-item.unread {
+    background-color: lightgray;
+}
+
+
+
+
+
+
 
 

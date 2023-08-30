@@ -140,27 +140,6 @@
     justify-content: center; /* Centers the buttons */
 
 }
-
-.button-container button {
-    margin: 0 5px;
-    border-radius: 20px;
-    padding: 10px 20px;
-    background-color: #fff;
-    color: #00ff00;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.button-container button:hover {
-    background-color: #00ff00;
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    padding: 0 20px;
-    margin-top: 20px;
-}
-
 .time-button.booked {
     background-color: red;
     color: white;

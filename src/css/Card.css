@@ -22,6 +22,14 @@
     position: absolute;
     bottom: 0;
     right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 10px;
+    width: 51%;
+    margin-top: 10%;
+    height: 100%;
+    justify-content: center;
 }
 
 @media (max-width: 576px) {
@@ -56,7 +64,7 @@
 
 .card-trainer {
     position: relative;
-    height: 500px; /* Example height */
+    height: 500px;
 }
 
 .card-trainer .card-image-container {
@@ -75,7 +83,7 @@
 .button-group {
     flex-direction: column;
     align-items: flex-end;
-    margin-bottom: 20px; /* 버튼과 트레이너 라벨 간의 간격 */
+    margin-bottom: 20px;
 }
 
 .button-group button {
@@ -91,33 +99,31 @@
 }
 
 .prize-history-label {
-    margin-bottom: 10px; /* 트레이너 이력과 map() 내용 간의 간격 늘리기 */
+    font-weight: bold;
+    margin-bottom: 10px;
     display: block;
     margin-top: 20px;
-    text-align: left;  /* 왼쪽으로 붙이기 */
+    text-align: left;
 }
 
-.card-body {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    padding: 10px; /* 원하는 패딩 값으로 조절 */
-    margin-bottom: 0; /* 추가 */
+.prize-history-label-content div {
+    text-align: right;
 }
 
 .modal-header {
     text-align: right;
-    padding: 10px; /* 원하는 패딩 값으로 조절 */
-    padding-top: 5px; /* 추가 */
-
+    padding: 10px;
+    padding-top: 5px;
 }
 
 /* trainer-info 스타일 추가 */
 .trainer-info {
-    width: 100%; /* 꽉 차게 설정 */
+    width: 100%;
     border: 1px solid black;
-    border-radius: 5px; /* 끝 부분을 둥글게 */
-    padding: 10px; /* 테두리와 내용 사이의 간격 */
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px;
+
 }
 
 .button-container-notification button {
@@ -138,4 +144,25 @@
 
 .reservationCancel {
     background-color: #ff0000;
+}
+
+
+
+.button-trainer{
+    background-color: #4CAF50; /* 파란색 배경 */
+    border-radius: 20px;
+    margin: 5%;
+    width: 100%;
+    top: 10%;
+
+}
+
+.trainer-nameTag {
+    margin-bottom: 20px; /* 간격 추가 */
+    top: 10%;
+}
+
+.button-container-trainer {
+    margin-bottom: 20px; /* 간격 추가 */
+    top: -30%;
 }

@@ -10,19 +10,11 @@ import {UserContext} from "../components/UserProvider";
 const Card = ({data, type, totalData}) => {
     const {user, setUser, logout} = useContext(UserContext);
 
-    useEffect(() => {
-        console.log("TEST USSER ::: ", user)
-    }, [user])
-
     const navigate = useNavigate();
     let history;
     let imageSliderProps;
     const [modalIsOpen, setIsOpen] = useState(false);
 
-    useEffect(() => {
-        console.log("TEST !!!!!!!!  Card DATA : ", data)
-        console.log("TEST !!!!!!!!  Card totalData : ", totalData)
-    }, []);
 
     if (type === 'content') {
         imageSliderProps = data.pointImagePath;
@@ -64,28 +56,6 @@ const Card = ({data, type, totalData}) => {
         }
     };
 
-
-
-    // const customStyles = {
-    //     content: {
-    //         display: 'flex',
-    //         flexDirection: 'column',
-    //         alignItems: 'center',
-    //         justifyContent: 'center',
-    //         top: '50%',
-    //         left: '50%',
-    //         right: 'auto',
-    //         bottom: 'auto',
-    //         // marginRight: '-50%',
-    //         transform: 'translate(-50%, -50%)',
-    //         width: '60%',
-    //         height: '60%',
-    //         border: '1px solid green',
-    //         borderRadius: '10px',
-    //     }
-    // };
-
-
     return (
         type === 'content' ? (
             <div className="card m-2" onClick={handleClick}>
@@ -109,12 +79,14 @@ const Card = ({data, type, totalData}) => {
                         </div>
                         <div className="col-md-6">
                             <div className="card-body">
-                                <div className="button-group">
-                                    <button onClick={handleReservation}>Make a P.T reservation</button>
+                                <div className="button-container-trainer">
+                                    <button className="button-trainer" onClick={handleReservation}>Make a P.T reservation</button>
                                 </div>
-                                <h2 className="trainer-label">trainer
-                                    <span className="trainer-name">{data.name}</span>
-                                </h2>
+                                <div className='trainer-nameTag'>
+                                    <h2 className="trainer-label">trainer
+                                        <span className="trainer-name">{data.name}</span>
+                                    </h2>
+                                </div>
                                 <div className="trainer-info">
                                     <span className="prize-history-label">트레이너 이력</span>
                                     <div className="prize-history-label-content">
