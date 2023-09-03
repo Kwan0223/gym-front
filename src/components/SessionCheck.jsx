@@ -10,7 +10,8 @@ const SessionCheck = () => {
 
     useEffect(() => {
         // 페이지 이동 시마다 세션 체크 API 호출
-        axios.get('http://localhost:8080/api/v1/check-session')
+        // axios.get('http://localhost:8080/api/v1/checkSession', { withCredentials: true })
+        axios.get('/api/v1/checkSession', { withCredentials: true })
             .then(response => {
                 if (response.data === "No session found") {
                     console.error('세션이 유효하지 않습니다.');
@@ -22,11 +23,7 @@ const SessionCheck = () => {
             });
     }, [navigate,location]);
 
-    return (
-        <div>
-
-        </div>
-    );
+    return null
 };
 
 export default SessionCheck;

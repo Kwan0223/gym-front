@@ -86,6 +86,8 @@ const Header = () => {
         }
     };
 
+
+
     const handlePageMove = (id) => {
         switch (id) {
             case 'home':

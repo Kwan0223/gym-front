@@ -24,6 +24,7 @@ const Login = () => {
 
 
             const res = await axios.post('http://localhost:8080/api/v1/users/login', userInfo, {
+            // const res = await axios.post('/api/v1/users/login', userInfo, {
                 headers : {
                     "Content-Type" : "application/json",
                 },
