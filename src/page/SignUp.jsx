@@ -41,7 +41,8 @@ const SignUp = () => {
         dataCheck();
 
 
-        axios.post('http://localhost:8080/signUp', userInfo, {
+        // axios.post('http://localhost:8080/signUp', userInfo, {
+        axios.post('http://localhost:80/signUp', userInfo, {
             headers : {
                 "Content-Type" : "application/json",
             },

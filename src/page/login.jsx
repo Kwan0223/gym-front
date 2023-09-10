@@ -22,21 +22,17 @@ const Login = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-
-            const res = await axios.post('http://localhost:8080/api/v1/users/login', userInfo, {
-            // const res = await axios.post('/api/v1/users/login', userInfo, {
-                headers : {
-                    "Content-Type" : "application/json",
-                },
+            // const res = await axios.post('http://localhost:8080/api/v1/users/login', userInfo, {
+            const res = await axios.post('/api/v1/users/login', userInfo, {
+                // headers : {
+                //     "Content-Type" : "application/json",
+                // },
             });
 
             console.log("TEST RES  data: ", res.data);
             console.log("TEST UserInfo : " , userInfo);
             setUser(res.data);
             navigate('/');
-
-
-
     };
 
 
